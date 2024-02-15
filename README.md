@@ -16,7 +16,7 @@ The following software products are required:
 Install the software packages above. Then perform the following steps. **Please let us know** if you cannot confirm the
 bullet points marked with **Please Confirm**.
 
-- Download this repository to your computer.
+- Clone (ideally; else download) this repository to your computer.
 - Open a shell and change the working directory to the root of this repository. In most shells this is done
   using the `cd` (change directory) command.
 - Execute `docker-compose up -d`. The first run might require some time as Docker is downloading the required images. 
