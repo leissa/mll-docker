@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  mll_docker:
+    container_name: mll_docker
+    build: .
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./shared:/home/jovyan
+    environment:
+      - PASSWORD=ml
+      - JUPYTER_TOKEN=ml
+      - JUPYTER_RUNTIME_DIR=/tmp/jupyter_runtime/
