@@ -8,3 +8,5 @@ shared/.ipynb_checkpoints/
 shared/.java/
 shared/.jupyter/
 shared/.local/
+/shared/mll/.ipynb_checkpoints/
+/shared/mll/out/llvm/helloworld-O3.ll
