@@ -19,7 +19,6 @@ public class Main {
 				}
 				""";
 		Util.saveDotPng(dot, "example");
-		
 
 		// 3) Test compilation via LLVM
 		Util.runLLVM("helloworld");
@@ -28,8 +27,8 @@ public class Main {
 		Util.saveLLVMOpt("helloworld", 3);
 		Util.runLLVM("helloworld-O3");
 	}
-	
-	
+
+
 	public static void main(String args[]) throws IOException {
 		testSetup();
 	}
