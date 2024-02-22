@@ -38,7 +38,7 @@ Confirm**.
     in the output above (i.e., a plot in the `out\plots` directory, a graph in
     the `out\dot` directory and an (optimized) LLVM program in the `llvm`
     directory with the name `helloworld-O3.ll`.
-- [Open the website](http://localhost:8888/lab/tree/HelloWorld.ipynb)
+- [Open the website](http://localhost:8888/lab/tree/mll.ipynb)
   `localhost:8888` in your browser. If required, provide the password `ml`.
 - Run the notebook `mll.ipynb` located in the `mll` directory. You can also
   alter some values, e.g., change the graph or the function.
