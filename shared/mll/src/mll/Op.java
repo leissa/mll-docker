@@ -173,7 +173,7 @@ public abstract class Op {
     public final String dot(HashMap<Op, Double> env) {
         var writer = new StringWriter();
         try {
-            dot(new HashMap<Op, Double>(), writer);
+            dot(env, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }

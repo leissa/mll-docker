@@ -33,7 +33,7 @@ public class LogReg {
 	}
 
 	// log loss on top of prediction = -(y*log(prediction) + (1-y)*log(1-prediction))
-	// small = prediction good --- large = prediciton bad
+	// small = prediction good --- large = prediction bad
 	public static Op lossGraph(Op forwardGraph) {
 		var dag = forwardGraph.dag();
 		var y = dag.var("y"); // true label

@@ -26,19 +26,19 @@ public class Grad extends Op {
     public static Grad c(Op[] inputs, Var[] vars) { return (Grad) inputs[0].dag().unify(new Grad(inputs, vars)); }
 
     /** Result of this operator when it was last evaluated */
-    double grad(String varName) { return result_[index(varName)]; }
+    public double grad(String varName) { return result_[index(varName)]; }
     
     /** Returns all results of this operator (result and gradients) when it was last evaluated */
-    double[] results() { return result_; }
+    public double[] results() { return result_; }
 
     /** Result of this operator when it was last evaluated */
-    double result() { return result_[0]; }
+    public double result() { return result_[0]; }
     
     /** Result of input(i) when it was last evaluated */
-    double result(int i) { return result_[i]; }
+    public double result(int i) { return result_[i]; }
 
     /** Returns index of specified variable in result() */
-    int index(String varName) {
+    public int index(String varName) {
     	for (int i=0; i<vars_.length; i++) {
     		if (vars_[i].name().equals(varName)) return i+1;
     	}
@@ -46,9 +46,9 @@ public class Grad extends Op {
 	};
     
     /** Returns the variables w.r.t. which partial derivatives are taken (in order of inputs 1, 2, ...) */
-    Var[] vars() { return vars_; }
-    int numVars() { return vars_.length; }
-    Var var(int i) { return vars_[i]; }
+    public Var[] vars() { return vars_; }
+    public int numVars() { return vars_.length; }
+    public Var var(int i) { return vars_[i]; }
 
     public @Override String toString() {
         var res = "{";

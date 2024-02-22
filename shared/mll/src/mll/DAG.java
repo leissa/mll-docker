@@ -4,12 +4,22 @@ import java.util.HashMap;
 
 /** A compute graph. */
 public class DAG {
+
 	/** Next unused id */
     private int             nextId_  = 0;
 
     /** All operators in this DAG. */
     private HashMap<Op, Op> ops_ = new HashMap<Op, Op>();
 
+    boolean doRewrite;
+    
+    public DAG() {
+    	this(true);
+    }
+    public DAG(boolean doRewrite) {
+    	this.doRewrite = doRewrite;
+    }
+    
     /** Start over and forget everything. */
     public void clear() {
         nextId_ = 0;
