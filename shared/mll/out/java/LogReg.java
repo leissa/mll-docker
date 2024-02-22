@@ -74,10 +74,9 @@ public class LogReg {
 		Grad dout = lossGraph.backwards(); // we only need this one below		
 		Util.saveDotPng(dout.dot(), "logreg-diff-"+dim);
 
-		DAG dag = dout.dag();
-
 		// start training (with incremental gradient descent)
-		double[] w = new double[dim + 1];
+		DAG dag = dout.dag();
+		double[] w = new double[dim + 1]; // initially all 0
 		var env = new HashMap<Op,Double>();
 		System.out.println(format("Initial weights: %s", Arrays.toString(w)));
 		for (int epoch=0; epoch<epochs; epoch++) {
@@ -93,17 +92,6 @@ public class LogReg {
 				env.put(dag.var("y"), example.get(dim));
 				set_w(dag, env, w);
 				
-				// set data in compute graph (x1,...,xD)
-				for (int i=0; i<dim; i++) {
-					env.put(dag.var("x"+(i+1)), example.get(i));
-				}
-				
-
-				// and the weights (w0=bias, w1...wD = feature weight)
-				for (int i=0; i<=dim; i++) {
-					env.put(dag.var("w"+i), w[i]);
-				}
-
 				// now run forward/backward
 				dout.eval(env);
 				totalLoss += dout.result(); // result holds the loss
@@ -144,23 +132,25 @@ public class LogReg {
 			
 			// now run forward
 			double pred = forwardGraph.eval(env);
-
 			System.out.println(format("Example %s, prediction: %f", example, pred));
 		}
 	}
 
+	// Set the values of all inputs (x1,...,xD) in env
 	static void set_x(DAG dag, HashMap<Op,Double> env, List<Double> x) {
 		for (int i=0; i<x.size(); i++) {
 			env.put(dag.var("x"+(i+1)), x.get(i));
 		}		
 	}
 	
+	// Set the values of all weights (w0,w1,...,wD) in env
 	static void set_w(DAG dag, HashMap<Op,Double> env, double[] w) {
 		for (int i=0; i<w.length; i++) {
 			env.put(dag.var("w"+i), w[i]);
 		}
 	}
 	
+	// read data, train, predict
 	public static void main(String args[]) throws IOException {
 		var data = readCsv("out/data/data_1d_10.csv");
 		var w = train(data, 100, 0.1);
