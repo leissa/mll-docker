@@ -74,7 +74,7 @@ public abstract class Op {
     // -- Compute free variables and operator usages ----------------------------------------------
 
     /** Used to record information that operator's output is used by op as input number index */
-    record Use(Op op, int index) {
+    static record Use(Op op, int index) {
         @Override public boolean equals(Object obj) {
             return (obj instanceof Use use) && op() == use.op() && index == use.index();
         }

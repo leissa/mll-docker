@@ -11,14 +11,11 @@ public class DAG {
     /** All operators in this DAG. */
     private HashMap<Op, Op> ops_ = new HashMap<Op, Op>();
 
-    boolean doRewrite;
     
     public DAG() {
     	this(true);
     }
-    public DAG(boolean doRewrite) {
-    	this.doRewrite = doRewrite;
-    }
+    
     
     /** Start over and forget everything. */
     public void clear() {
