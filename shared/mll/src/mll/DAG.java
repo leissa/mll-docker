@@ -8,14 +8,21 @@ public class DAG {
 	/** Next unused id */
     private int             nextId_  = 0;
 
+    /** Flag to indicate whether smart constructors should rewrite/optimize expressions */
+    private boolean doRewrite_;
+
     /** All operators in this DAG. */
     private HashMap<Op, Op> ops_ = new HashMap<Op, Op>();
 
-    
     public DAG() {
     	this(true);
     }
-    
+
+    public DAG(boolean doRewrite) {
+    	this.doRewrite_ = doRewrite;
+    }
+
+    public boolean doRewrite() { return doRewrite_; }
     
     /** Start over and forget everything. */
     public void clear() {
